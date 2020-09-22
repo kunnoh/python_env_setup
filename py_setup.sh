@@ -4,19 +4,19 @@ PYSETENV_DIR_PATH="$HOME/virtualenvs/"
 
 #  Default python version to use
 PYSETENV_PYTHON_VERSION=3
-PYSETENV_PYTHON_PATH=$(which python${PYSETENV_PYTHON_VERSION})
+PYSETENV_PYTHON_PATH="$(which python${PYSETENV_PYTHON_VERSION})"
 
 function _pysetenv_help_()
 {
     # Echo usage message
     echo "Usage: pysetenv [OPTIONS] [NAME]"
-    echo Positional Arguments:
-    echo -e "NAME                  Activate virtual env."
+    echo :
+    echo "NAME                  Activate virtual env."
     echo Optional Arguments:
-    echo -e "-l, --list            List all virtual environments."
-    echo -e "-n, --new NAME        Create a new Python Virtual Environment."
-    echo -e "-d, --delete NAME     Delete existing Python Virtual Environment."
-    echo -e "-p, --python PATH     Python binary path."
+    echo "-l, --list            List all virtual environments."
+    echo "-n, --new NAME        Create a new Python Virtual Environment."
+    echo "-d, --delete NAME     Delete existing Python Virtual Environment."
+    echo "-p, --python PATH     Python binary path."
 }
 
 function _pysetenv_custom_python_path()
