@@ -17,7 +17,7 @@
 <h4>INSTALLATION</h4>
 
 <code>
-    curl https://raw.githubusercontent.com/kunnoh/python_env_setup/master/install.sh
+    curl https://raw.githubusercontent.com/kunnoh/python_env_setup/master/install.sh | sh -
 </code>
 
 <h4>USAGE</h4>
