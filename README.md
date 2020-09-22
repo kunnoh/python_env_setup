@@ -1,5 +1,6 @@
 # python_env_setup
 
-#Installation
+# Installation
 
-wget https://github.com/kunnoh/python_env_setup.git
+open your terminnal and run
+    wget https://raw.githubusercontent.com/kunnoh/python_env_setup/master/install.sh
