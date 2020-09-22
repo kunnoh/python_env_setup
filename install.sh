@@ -6,14 +6,14 @@ RED="\e[0;31m"
 BLUE="\e[0;34m"
 RESET="\033[0m"
 
-echo -e "${CYAN}"[+] "${RESET}""${BOLD_GREEN}"Creating directory to hold all Python virtual environments"${RESET}"
+echo "${CYAN}"[+] "${RESET}""${BOLD_GREEN}"Creating directory to hold all Python virtual environments"${RESET}"
 mkdir -p "${HOME}"/virtualenvs
-echo -e "${CYAN}"[+] "${RESET}""${BOLD_GREEN}"Downloading setV"${RESET}"
+echo "${CYAN}"[+] "${RESET}""${BOLD_GREEN}"Downloading pysetenv"${BLUE}"
 
 curl -# https://raw.githubusercontent.com/kunnoh/python_env_setup/master/py_setup.sh | sh -
 
 if [ -e "${HOME}/.bashrc" ];
 then
-    echo -e "${CYAN}"[+] "${RESET}"Adding "${blue}"~/.bash_profile"${RESET}"
+    echo -e "${CYAN}"[+] "${RESET}"Adding "${BLUE}"~/.bash_profile"${RESET}"
     echo "source ~/.py_setup.sh" >> ${HOME}/.bash_profile
 fi
