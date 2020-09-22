@@ -12,7 +12,7 @@ echo -e "${CYAN}"[+] "${RESET}""${BOLD_GREEN}"Downloading setV"${RESET}"
 
 curl -# https://raw.githubusercontent.com/kunnoh/python_env_setup/master/py_setup.sh | sh -
 
-if [ -e "${HOME}/.bashrc"];
+if [ -e "${HOME}/.bashrc" ];
 then
     echo -e "${CYAN}"[+] "${RESET}"Adding "${blue}"~/.bash_profile"${RESET}"
     echo "source ~/.py_setup.sh" >> ${HOME}/.bash_profile

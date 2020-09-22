@@ -6,7 +6,8 @@ PYSETENV_DIR_PATH="$HOME/virtualenvs/"
 PYSETENV_PYTHON_VERSION=3
 PYSETENV_PYTHON_PATH=$(which python${PYSETENV_PYTHON_VERSION})
 
-function _pysetenv_help_(){
+function _pysetenv_help_()
+{
     # Echo usage message
     echo "Usage: pysetenv [OPTIONS] [NAME]"
     echo Positional Arguments:
