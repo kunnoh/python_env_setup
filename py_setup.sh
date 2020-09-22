@@ -72,7 +72,7 @@ function _pysetenv_delete()
             read -p "[?] Confirm you want to delete ${1} virtual environment (Y/N)" yes_no
             case $yes_no in
                 Y|y) rm -rvf ${PYSETENV_VIRTUAL_DIR_PATH}${1};;
-                N|n) echo "[*] Aborting environment deletion"
+                N|n) echo "[*] Aborting environment deletion";;
                 *) echo "[*] enter either Y/y for yes or N/n"
             esac
         else
