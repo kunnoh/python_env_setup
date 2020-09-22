@@ -4,9 +4,9 @@ PYSETENV_DIR_PATH="$HOME/virtualenvs/"
 
 #  Default python version to use
 PYSETENV_PYTHON_VERSION=3
-PYSETENV_PYTHON_PATH="$(which python${PYSETENV_PYTHON_VERSION})"
+PYSETENV_PYTHON_PATH=$(which python${PYSETENV_PYTHON_VERSION})
 
-function _pysetenv_help_()
+function _pysetenv_help()
 {
     # Echo usage message
     echo "Usage: pysetenv [OPTIONS] [NAME]"
@@ -43,7 +43,7 @@ function _pysetenv_create()
     if [ -z ${1} ];
     then
         echo "[!] ERROR!! Please pass virtual environment name!"
-        _pysetenv_help_
+        _pysetenv_help
     else
         echo "[+] Adding new virtual environment: $1"
 
@@ -65,7 +65,7 @@ function _pysetenv_delete()
     if [ -z ${1} ];
     then
         echo "[!] ERROR!! Please pass virtual environment name!"
-        _pysetenv_help_
+        _pysetenv_help
     else
         if [ -d ${PYSETENV_VIRTUAL_DIR_PATH}${1} ];
         then
@@ -98,7 +98,7 @@ function pysetenv()
 {
     if [ $# -eq 0 ]; # If no argument show help
     then
-        _pysetenv_help_
+        _pysetenv_help
     elif [ $# -le 3 ];
     then
         case "${1}" in
@@ -110,7 +110,7 @@ function pysetenv()
                    source ${PYSET_VIRTUAL_DIR_PATH}${1}/bin/activate
                 else
                     echo "[!] ERROR!! virtual environment with name ${1} does not exist"
-                    _pysetenv_help_
+                    _pysetenv_help
                 fi
                 ;;
         esac
@@ -118,7 +118,7 @@ function pysetenv()
     then
         case "${2}" in
             -p|--python) _pysetenv_custom_python_path ${3}${4};;
-            *) _pysetenv_help_
+            *) _pysetenv_help
         esac
     fi
 }
