@@ -11,7 +11,7 @@ BOLD_YELLOW='\033[1;33m'
 RESET="\033[0m"
 
 # Path to virtual environment directory
-PYSETENV_DIR_PATH="$HOME/virtualenvs/"
+PYSETENV_VIRTUAL_DIR_PATH="$HOME/virtualenvs/"
 
 #  Default python version to use
 PYSETENV_PYTHON_VERSION=3
