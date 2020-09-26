@@ -34,5 +34,5 @@ echo "${YELLOW}"[*] "${CYAN}"Type: "${BOLD_GREEN}" 'source ~/.bashrc'
 echo "${YELLOW}"[*] "${CYAN}"Or open new terminal and start using "${BOLD_GREEN}"pysetenv
 
 # Usage
-echo -e "${YELLOW}"*********************************
-echo -e "${GREEN}"Usage: "${BOLD_GREEN}"pysetenv VIRTUAL_ENVIRONMENT_NAME"${RESET}"
+echo "${YELLOW}"*********************************
+echo "${GREEN}"Usage: "${BOLD_GREEN}"pysetenv VIRTUAL_ENVIRONMENT_NAME"${RESET}"
