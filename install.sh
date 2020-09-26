@@ -9,6 +9,9 @@ GREEN='\033[0;32m'
 YELLOW='\033[0;33m'
 RESET="\033[0m"
 
+echo -e "${YELLOW}"*********************************
+echo -e "${YELLOW}"[*] "${CYAN}"Checking python version installed currently on the system..."${BOLD_GREEN}"
+python3 --version
 echo -e "${BOLD_GREEN}"[+] "${RESET}""${CYAN}"Creating directory to hold all Python virtual environments"${RESET}"
 mkdir -p "${HOME}"/virtualenvs
 echo -e "${YELLOW}"[*] "${RESET}""${CYAN}"Downloading pysetenv"${BLUE}${PURPLE}"
@@ -31,5 +34,5 @@ echo -e "${YELLOW}"[*] "${CYAN}"Type: "${BLUE}" 'source ~/.bashrc'
 echo -e "${YELLOW}"[*] "${CYAN}"Or open new terminal and start using "${BOLD_GREEN}"pysetenv
 
 # Usage
-echo -e "${YELLOW}"#############################
-echo -e "${GREEN}"Usage: pysetenv "${BOLD_GREEN}"VIRTUAL_ENVIRONMENT_NAME"${RESET}"\n
+echo -e "${YELLOW}"*********************************
+echo -e "${GREEN}"Usage: pysetenv "${BOLD_GREEN}"VIRTUAL_ENVIRONMENT_NAME"${RESET}"

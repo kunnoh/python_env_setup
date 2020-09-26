@@ -1,3 +1,13 @@
+# #!/usr/bin/env bash
+
+CYAN='\033[0;36m'
+BOLD_GREEN="\033[1;32m"
+RED="\e[0;31m"
+BLUE="\e[0;34m"
+PURPLE='\033[0;35m'
+GREEN='\033[0;32m'
+YELLOW='\033[0;33m'
+RESET="\033[0m"
 
 # Path to virtual environment directory
 PYSETENV_DIR_PATH="$HOME/virtualenvs/"
@@ -9,14 +19,14 @@ PYSETENV_PYTHON_PATH=$(which python${PYSETENV_PYTHON_VERSION})
 function _pysetenv_help()
 {
     # Echo usage message
-    echo "Usage: pysetenv [OPTIONS] [NAME]"
+    echo -e "${YELLOW}"Usage: pysetenv [OPTIONS] [NAME]
     echo :
     echo "NAME                  Activate virtual env."
     echo Optional Arguments:
-    echo "-l, --list            List all virtual environments."
-    echo "-n, --new NAME        Create a new Python Virtual Environment."
-    echo "-d, --delete NAME     Delete existing Python Virtual Environment."
-    echo "-p, --python PATH     Python binary path."
+    echo -e "${YELLOW}"-l, --list            List all virtual environments.
+    echo -e "${YELLOW}"-n, --new NAME        Create a new Python Virtual Environment.
+    echo -e "${YELLOW}"-d, --delete NAME     Delete existing Python Virtual Environment.
+    echo -e "${YELLOW}"-p, --python PATH     Python binary path.
 }
 
 function _pysetenv_custom_python_path()
@@ -45,7 +55,7 @@ function _pysetenv_create()
         echo "[!] ERROR!! Please pass virtual environment name!"
         _pysetenv_help
     else
-        echo "[+] Adding new virtual environment: $1"
+        echo -e "${GREEN}"[+] Adding new virtual environment: $1
 
         if [ ${PYSETENV_PYTHON_VERSION} -eq 3 ];
         then
@@ -54,7 +64,7 @@ function _pysetenv_create()
             virtualenv -p ${PYSETENV_PYTHON_PATH}${PYSETENV_VIRTUAL_DIR_PATH}${1}
         fi
 
-        echo "[*] Activate python virtual environment using this command: pysetenv ${1}"
+        echo "${CYAN}"[*] Activate python virtual environment using this command: pysetenv ${1}
     fi
 }
 
@@ -86,7 +96,7 @@ function _pysetenv_delete()
 function _pysetenv_list()
 {
     echo -e "[*] List of virtual environments you have under ${PYSETENV_VIRTUAL_DIR_PATH}:\n"
-    for v in $(ls -l "${PYSETENV_VIRTUAL_DIR_PATH}" | egrep '^d' | awk -F " " '{print $NF}' )
+    for v in $(ls -l ${PYSETENV_VIRTUAL_DIR_PATH} | egrep '^d' | awk -F " " '{print $NF}' )
     do
         echo ${v}
     done

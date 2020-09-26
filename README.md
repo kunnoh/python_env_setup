@@ -1,7 +1,10 @@
-# Python3 Virtual Environment Setup
+# Python3 Project & Virtual Environment Setup
 
 <p>
-    This is a script used to setup and manage python3 virtual environments
+    This is a script used to setup and manage python3 projects & virtual environments
+</p>
+<p>
+    Works on popular linux OS Debian, Ubuntu, Redhat, CentOs, Fedora, Kali
 </p>
 <p>
     It provides the following features:
