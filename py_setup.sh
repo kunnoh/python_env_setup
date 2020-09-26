@@ -31,24 +31,6 @@ function _pysetenv_help()
     echo -e -p, --python PATH     Python binary path."${RESET}"
 }
 
-function _pysetenv_custom_python_path()
-{
-    if [ -f "${1}" ];
-    then
-        if [ "`expr $1 : '.*python\([2,3]\)'`" = "3" ];
-        then
-            PYSETENV_PYTHON_VERSION=3
-        else
-            PYSETENV_PYTHON_VERSION=2
-        fi
-        PYSETENV_PYTHON_PATH=${1}
-        _pysetenv_create $2
-    else
-        echo -e "${RED}"[!] ERROR!! Path ${1} does not exist!
-    fi
-}
-
-
 # Creates new virtual environment if ran with -n | --new flag
 function _pysetenv_create()
 {
