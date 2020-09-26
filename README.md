@@ -1,4 +1,4 @@
-# Python3 Project & Virtual Environment Setup
+# Python installer and virtual environment setup script
 
 <p>
     This is a script used to setup and manage python3 projects & virtual environments
@@ -11,33 +11,30 @@
 </p>
 <ul>
     <li>Create a new virtual environment</li>
-    <li>
-        Create a new virtual environment using custom Python path using -p or --python.
-    </li>
     <li>Delete a virtual environment</li>
     <li>List existing virtual environments</li>
+    <li>Load existing python3 project</li>
 </ul>
 <h4>INSTALLATION</h4>
 
 <code>
-    curl https://raw.githubusercontent.com/kunnoh/python_env_setup/master/install.sh | sh -
+    curl https://raw.githubusercontent.com/connessionetech/python-installer/master/install.sh?token=AEZZGQZO75RUD2R2GVZRSQK7N53PE | sh -
 </code>
 
 <h4>USAGE</h4>
 <ul>
     <li>The command used is <strong>pysetenv</strong></li>
-    <h4>example</h4>
     <ul>
-        <li><strong>pysetenv -h | pysetenv --help</strong> to show pysetenv usage</li>
-        <li><strong>pysetenv -l | pysetenv --list</strong> to list existing virtual environments</li>
+        <li><strong>pysetenv -h name| pysetenv --help name</strong> to show pysetenv usage</li>
+        <li><strong>pysetenv -l name| pysetenv --list name</strong> to list existing virtual environments</li>
+        <li><strong>pysetenv -n name| pysetenv --new name</strong> to create new virtual environment</li>
+        <li><strong>pysetenv -d name| pysetenv --delete name</strong> to delete a virtual environment</li>
     </ul>
-</ul>
 
 <h4>CONFIGURATION</h4>
 <p>Configurables are</p>
 <ul>
-    <li><strong>PYSETENV_DIR_PATH</strong>  This is the root Path for virtual environments</li>
-    <li><strong>PYSETENV_PYTHON_VERSION</strong>  This the python version to use. The default is PYSETENV_PYTHON_VERSION=3</li>
+    <li><strong>PYSETENV_VIRTUAL_DIR_PATH</strong>  This is the root Path for virtual environments</li>
+    <li><strong>PYSETENV_PYTHON_VERSION</strong>  This the python version to use. The default is python3</li>
     <li><strong>PYSETENV_PYTHON_PATH</strong> This is the python installation folder in the system</li>
-    <li></li>
 </ul>

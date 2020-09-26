@@ -22,13 +22,15 @@ function _pysetenv_help()
     # Echo usage message
     echo -e "${YELLOW}"Usage: pysetenv [OPTIONS] [NAME]
     echo -e "${BOLD_YELLOW}"EXAMPLE:
-    echo -e "${BOLD_GREEN}"pysetenv -n foo       "${YELLOW}"Create virtual environment with name foo
-    echo -e "${BOLD_GREEN}"pysetenv foo          "${YELLOW}"Activate foo virtual env.
+    echo -e "${BOLD_GREEN}"pysetenv -n foo       "${CYAN}"Create virtual environment with name foo
+    echo -e "${BOLD_GREEN}"pysetenv foo          "${CYAN}"Activate foo virtual env.
     echo -e "${BOLD_YELLOW}"Optional Arguments:"${YELLOW}"
-    echo -l, --list            List all virtual environments.
-    echo -n, --new NAME        Create a new Python Virtual Environment.
-    echo -d, --delete NAME     Delete existing Python Virtual Environment.
-    echo -e -p, --python PATH     Python binary path."${RESET}"
+    echo -l, --list                  List all virtual environments.
+    echo -n, --new NAME              Create a new Python Virtual Environment.
+    echo -d, --delete NAME           Delete existing Python Virtual Environment.
+    echo -e -p, --python PATH        Python binary path."${RESET}"
+    echo -e "${BOLD_YELLOW}"Load existing project:
+    echo -l, --load /path/to/project -e|--environment NAME Load existing project to
 }
 
 # Creates new virtual environment if ran with -n | --new flag
@@ -39,7 +41,7 @@ function _pysetenv_create()
         echo -e "${RED}"[!] ERROR!! Please pass virtual environment name!
         _pysetenv_help
     else
-        echo -e "${GREEN}"[+] Adding new virtual environment: $1
+        echo -e "${BOLD_GREEN}"[+] "${GREEN}"Adding new virtual environment: $1"${RESET}"
 
         if [ ${PYSETENV_PYTHON_VERSION} -eq 3 ];
         then
@@ -48,7 +50,7 @@ function _pysetenv_create()
             virtualenv -p ${PYSETENV_PYTHON_PATH}${PYSETENV_VIRTUAL_DIR_PATH}${1}
         fi
 
-        echo -e "${CYAN}"[*] Activate python virtual environment using this command: pysetenv ${1}
+        echo -e "${CYAN}"[*] Activate python virtual environment using this command: pysetenv ${1}"${RESET}"
     fi
 }
 
@@ -79,10 +81,10 @@ function _pysetenv_delete()
 # Lists all virtual environments if ran with -l|--list flag
 function _pysetenv_list()
 {
-    echo -e "${YELLOW}""[*] List of virtual environments you have under ${PYSETENV_VIRTUAL_DIR_PATH}"
+    echo -e "${BOLD_YELLOW}"[*] "${CYAN}"List of virtual environments you have under ${PYSETENV_VIRTUAL_DIR_PATH}"${BLUE}"
     for v in $(ls -l ${PYSETENV_VIRTUAL_DIR_PATH} | egrep '^d' | awk -F " " '{print $NF}' )
     do
-        echo ${v}"${RESET}"
+        echo -e ${BOLD_YELLOW} ${v} ${RESET}
     done
 }
 

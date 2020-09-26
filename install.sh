@@ -11,15 +11,17 @@ RESET="\033[0m"
 
 echo "${YELLOW}"*********************************************************
 echo  "${YELLOW}"[*] "${CYAN}"Checking python version installed currently on the system..."${BOLD_GREEN}"
-if [[ "$(python3 -V)" =~ "Python 3"]];
+
+if [ -e "$(python3 -V)" =~ "Python 3" ];
 then
-    echo "${RED}"[!]python3 not found
+    echo "${RED}"[!] python3 not found
     echo "${BOLD_GREEN}"[+] Installing python3
 fi
+
 python3 --version
 echo  "${BOLD_GREEN}"[+] "${RESET}""${CYAN}"Creating directory to hold all Python virtual environments"${RESET}"
 mkdir -p "${HOME}"/virtualenvs
-echo "${YELLOW}"[*] "${RESET}""${CYAN}"Downloading pysetenv"${BLUE}${PURPLE}"
+echo "${YELLOW}"[*] "${RESET}""${CYAN}"Downloading pysetenv"${PURPLE}"
 
 curl -# https://raw.githubusercontent.com/kunnoh/python_env_setup/master/py_setup.sh -o ${HOME}/.py_setup.sh
 
@@ -39,4 +41,4 @@ echo "${YELLOW}"[*] "${CYAN}"Type: "${BOLD_GREEN}" 'source ~/.bashrc' "${CYAN}"O
 
 # Usage
 echo "${YELLOW}"*********************************************************
-echo "${GREEN}"Usage: "${BOLD_GREEN}"pysetenv VIRTUAL_ENVIRONMENT_NAME"${RESET}"
+echo "${GREEN}"Usage: "${BOLD_GREEN}"pysetenv VIRTUAL_ENVIRONMENT_NAME"${YELLOW}"to activate the virtual environment"${RESET}"
