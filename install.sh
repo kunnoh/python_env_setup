@@ -41,4 +41,4 @@ echo "${YELLOW}"[*] "${CYAN}"Type: "${BOLD_GREEN}" 'source ~/.bashrc' "${CYAN}"O
 
 # Usage
 echo "${YELLOW}"*********************************************************
-echo "${GREEN}"Usage: "${BOLD_GREEN}"pysetenv VIRTUAL_ENVIRONMENT_NAME"${YELLOW}"to activate the virtual environment"${RESET}"
+echo "${GREEN}"Usage: "${BOLD_GREEN}"pysetenv VIRTUAL_ENVIRONMENT_NAME "${CYAN}"to activate the virtual environment"${RESET}"
