@@ -30,7 +30,7 @@ fi
 
 # Installation complete
 echo "${YELLOW}"[*] "${CYAN}"Installation Completed Successfully!
-echo "${YELLOW}"[*] "${CYAN}"Type: "${BOLD_GREEN}" 'source ~/.bashrc' ${CYAN}"or open new terminal and start using "${BOLD_GREEN}"pysetenv
+echo "${YELLOW}"[*] "${CYAN}"Type: "${BOLD_GREEN}" 'source ~/.bashrc' "${CYAN}"or open new terminal and start using "${BOLD_GREEN}"pysetenv
 
 # Usage
 echo "${YELLOW}"*********************************
