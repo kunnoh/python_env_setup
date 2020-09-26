@@ -11,9 +11,10 @@ RESET="\033[0m"
 
 echo "${YELLOW}"*********************************************************
 echo  "${YELLOW}"[*] "${CYAN}"Checking python version installed currently on the system..."${BOLD_GREEN}"
-if [ python3 --version -1 ];
+if [ "$(python3 -V)" =~ "Python 3"];
 then
     echo "${RED}"[!]python3 not found
+    echo "${BOLD_GREEN}"[+] Installing python3
 fi
 python3 --version
 echo  "${BOLD_GREEN}"[+] "${RESET}""${CYAN}"Creating directory to hold all Python virtual environments"${RESET}"
