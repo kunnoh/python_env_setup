@@ -28,7 +28,7 @@ function _pysetenv_help()
     echo -l, --list            List all virtual environments.
     echo -n, --new NAME        Create a new Python Virtual Environment.
     echo -d, --delete NAME     Delete existing Python Virtual Environment.
-    echo -p, --python PATH     Python binary path."${RESET}"
+    echo -e -p, --python PATH     Python binary path."${RESET}"
 }
 
 function _pysetenv_custom_python_path()
