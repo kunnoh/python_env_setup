@@ -23,10 +23,10 @@ function _pysetenv_help()
     echo :
     echo "NAME                  Activate virtual env."
     echo Optional Arguments:
-    echo -e "${YELLOW}"-l, --list            List all virtual environments.
-    echo -e "${YELLOW}"-n, --new NAME        Create a new Python Virtual Environment.
-    echo -e "${YELLOW}"-d, --delete NAME     Delete existing Python Virtual Environment.
-    echo -e "${YELLOW}"-p, --python PATH     Python binary path.
+    echo -l, --list            List all virtual environments.
+    echo -n, --new NAME        Create a new Python Virtual Environment.
+    echo -d, --delete NAME     Delete existing Python Virtual Environment.
+    echo -p, --python PATH     Python binary path."${RESET}"
 }
 
 function _pysetenv_custom_python_path()
@@ -42,7 +42,7 @@ function _pysetenv_custom_python_path()
         PYSETENV_PYTHON_PATH=${1}
         _pysetenv_create $2
     else
-        echo "[!] ERROR!! Path ${1} does not exist"
+        echo -e "${RED}"[!] ERROR!! Path ${1} does not exist!
     fi
 }
 
@@ -64,7 +64,7 @@ function _pysetenv_create()
             virtualenv -p ${PYSETENV_PYTHON_PATH}${PYSETENV_VIRTUAL_DIR_PATH}${1}
         fi
 
-        echo "${CYAN}"[*] Activate python virtual environment using this command: pysetenv ${1}
+        echo -e "${CYAN}"[*] Activate python virtual environment using this command: pysetenv ${1}
     fi
 }
 
