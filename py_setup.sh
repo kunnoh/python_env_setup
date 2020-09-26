@@ -7,7 +7,7 @@ BLUE="\e[0;34m"
 PURPLE='\033[0;35m'
 GREEN='\033[0;32m'
 YELLOW='\033[0;33m'
-BYELLOW='\033[1;33m'
+BOLD_YELLOW='\033[1;33m'
 RESET="\033[0m"
 
 # Path to virtual environment directory
@@ -22,8 +22,8 @@ function _pysetenv_help()
     # Echo usage message
     echo -e "${YELLOW}"Usage: pysetenv [OPTIONS] [NAME]
     echo EXAMPLE:
-    echo -e "${BYELLOW}"pysetenv -n foo       "${YELLOW}"Create virtual environment with name foo
-    echo -e "${BYELLOW}"pysetenv foo          "${YELLOW}"Activate foo virtual env.
+    echo -e "${BOLD_GREEN}"pysetenv -n foo       "${YELLOW}"Create virtual environment with name foo
+    echo -e "${BOLD_YELLOW}"pysetenv foo          "${YELLOW}"Activate foo virtual env.
     echo Optional Arguments:
     echo -l, --list            List all virtual environments.
     echo -n, --new NAME        Create a new Python Virtual Environment.
@@ -54,7 +54,7 @@ function _pysetenv_create()
 {
     if [ -z ${1} ];
     then
-        echo "[!] ERROR!! Please pass virtual environment name!"
+        echo -e "${RED}"[!] ERROR!! Please pass virtual environment name!
         _pysetenv_help
     else
         echo -e "${GREEN}"[+] Adding new virtual environment: $1
@@ -76,19 +76,19 @@ function _pysetenv_delete()
 {
     if [ -z ${1} ];
     then
-        echo "[!] ERROR!! Please pass virtual environment name!"
+        echo -e "${RED}"[!] ERROR!! Please pass virtual environment name!
         _pysetenv_help
     else
         if [ -d ${PYSETENV_VIRTUAL_DIR_PATH}${1} ];
         then
-            read -p "[?] Confirm you want to delete ${1} virtual environment (Y/N)" yes_no
+            read -p "${CYAN}"[?] Confirm you want to delete ${1} virtual environment "${BOLD_GREEN}"(Y/N) "${YELLOW}"yes_no
             case $yes_no in
                 Y|y) rm -rvf ${PYSETENV_VIRTUAL_DIR_PATH}${1};;
                 N|n) echo "[*] Aborting environment deletion";;
                 *) echo "[*] enter either Y/y for yes or N/n"
             esac
         else
-            echo "[!] ERROR!! No virtual environment exists byt he name: ${1}"
+            echo "${RED}"[!] ERROR!! No virtual environment exists byt he name: ${1}"${RESET}"
         fi
     fi
 }
