@@ -7,6 +7,7 @@ BLUE="\e[0;34m"
 PURPLE='\033[0;35m'
 GREEN='\033[0;32m'
 YELLOW='\033[0;33m'
+BYELLOW='\033[1;33m'
 RESET="\033[0m"
 
 # Path to virtual environment directory
@@ -20,8 +21,9 @@ function _pysetenv_help()
 {
     # Echo usage message
     echo -e "${YELLOW}"Usage: pysetenv [OPTIONS] [NAME]
-    echo :
-    echo "NAME                  Activate virtual env."
+    echo EXAMPLE:
+    echo -e "${BYELLOW}"pysetenv -n foo       "${YELLOW}"Create virtual environment with name foo
+    echo -e "${BYELLOW}"pysetenv foo          "${YELLOW}"Activate foo virtual env.
     echo Optional Arguments:
     echo -l, --list            List all virtual environments.
     echo -n, --new NAME        Create a new Python Virtual Environment.
@@ -95,10 +97,10 @@ function _pysetenv_delete()
 # Lists all virtual environments if ran with -l|--list flag
 function _pysetenv_list()
 {
-    echo -e "[*] List of virtual environments you have under ${PYSETENV_VIRTUAL_DIR_PATH}:\n"
+    echo -e "${YELLOW}""[*] List of virtual environments you have under ${PYSETENV_VIRTUAL_DIR_PATH}"
     for v in $(ls -l ${PYSETENV_VIRTUAL_DIR_PATH} | egrep '^d' | awk -F " " '{print $NF}' )
     do
-        echo ${v}
+        echo ${v}"${RESET}"
     done
 }
 
@@ -119,7 +121,7 @@ function pysetenv()
                then
                    source ${PYSET_VIRTUAL_DIR_PATH}${1}/bin/activate
                 else
-                    echo "[!] ERROR!! virtual environment with name ${1} does not exist"
+                    echo -e "${RED}"[!] ERROR!! virtual environment with name ${1} does not exist
                     _pysetenv_help
                 fi
                 ;;
