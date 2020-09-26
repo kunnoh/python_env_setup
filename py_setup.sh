@@ -30,7 +30,7 @@ function _pysetenv_help()
     echo -d, --delete NAME           Delete existing Python Virtual Environment.
     echo -e -p, --python PATH        Python binary path."${RESET}"
     echo -e "${BOLD_YELLOW}"Load existing project:
-    echo -l, "--load /path/to/project -e|--environment NAME Load existing project to"
+    echo -e "${BLUE}"-l, "--load /path/to/project -e|--environment NAME Load existing project to""${RESET}"
 }
 
 # Creates new virtual environment if ran with -n | --new flag
