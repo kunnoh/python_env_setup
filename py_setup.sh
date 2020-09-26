@@ -63,7 +63,7 @@ function _pysetenv_delete()
     else
         if [ -d ${PYSETENV_VIRTUAL_DIR_PATH}${1} ];
         then
-            read -p "${CYAN}"[?] Confirm you want to delete ${1} virtual environment "${BOLD_GREEN}"(Y/N) "${YELLOW}"yes_no
+            read -p -e "${CYAN}"[?] Confirm you want to delete ${1} virtual environment "${BOLD_GREEN}"(Y/N)"${YELLOW}"yes_no
             case $yes_no in
                 Y|y) rm -rvf ${PYSETENV_VIRTUAL_DIR_PATH}${1};;
                 N|n) echo "[*] Aborting environment deletion";;
@@ -107,12 +107,6 @@ function pysetenv()
                     _pysetenv_help
                 fi
                 ;;
-        esac
-    elif [ $# -le 5 ];
-    then
-        case "${2}" in
-            -p|--python) _pysetenv_custom_python_path ${3}${4};;
-            *) _pysetenv_help
         esac
     fi
 }
