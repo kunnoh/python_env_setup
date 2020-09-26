@@ -21,10 +21,10 @@ function _pysetenv_help()
 {
     # Echo usage message
     echo -e "${YELLOW}"Usage: pysetenv [OPTIONS] [NAME]
-    echo EXAMPLE:
+    echo -e "${BOLD_YELLOW}"EXAMPLE:
     echo -e "${BOLD_GREEN}"pysetenv -n foo       "${YELLOW}"Create virtual environment with name foo
-    echo -e "${BOLD_YELLOW}"pysetenv foo          "${YELLOW}"Activate foo virtual env.
-    echo Optional Arguments:
+    echo -e "${BOLD_GREEN}"pysetenv foo          "${YELLOW}"Activate foo virtual env.
+    echo -e "${BOLD_YELLOW}"Optional Arguments:"${YELLOW}"
     echo -l, --list            List all virtual environments.
     echo -n, --new NAME        Create a new Python Virtual Environment.
     echo -d, --delete NAME     Delete existing Python Virtual Environment.
