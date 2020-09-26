@@ -83,7 +83,7 @@ function _pysetenv_delete()
 function _pysetenv_list()
 {
     echo -e "${BOLD_YELLOW}"[*] "${CYAN}"List of virtual environments you have under ${PYSETENV_VIRTUAL_DIR_PATH}"${BLUE}"
-    for v in $(ls -l ${PYSETENV_VIRTUAL_DIR_PATH} | egrep '^d' | awk -F " " '{print $NF}' )
+    for v in $(ls -l ${PYSETENV_VIRTUAL_DIR_PATH} | egrep '^d' | awk -F " " '{print $NF}' )"${RESET}"
     do
         echo -e ${BOLD_YELLOW} ${v} ${RESET}
     done
@@ -104,7 +104,7 @@ function pysetenv()
             -l|--list) _pysetenv_list;;
             *) if [ -d ${PYSETENV_VIRTUAL_DIR_PATH}${1} ];
                then
-                   source ${PYSET_VIRTUAL_DIR_PATH}${1}/bin/activate
+                   source ${PYSETENV_VIRTUAL_DIR_PATH}${1}/bin/activate
                 else
                     echo -e "${RED}"[!] ERROR!! virtual environment with name ${1} does not exist
                     _pysetenv_help
