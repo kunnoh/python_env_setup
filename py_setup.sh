@@ -24,13 +24,13 @@ function _pysetenv_help()
     echo -e "${BOLD_YELLOW}"EXAMPLE:
     echo -e "${BOLD_GREEN}"pysetenv -n foo       "${CYAN}"Create virtual environment with name foo
     echo -e "${BOLD_GREEN}"pysetenv foo          "${CYAN}"Activate foo virtual env.
-    echo -e "${BOLD_YELLOW}"Optional Arguments:"${YELLOW}"
+    echo -e "${BOLD_YELLOW}"Optional Arguments:"${BLUE}"
     echo -l, --list                  List all virtual environments.
     echo -n, --new NAME              Create a new Python Virtual Environment.
     echo -d, --delete NAME           Delete existing Python Virtual Environment.
     echo -e -p, --python PATH        Python binary path."${RESET}"
     echo -e "${BOLD_YELLOW}"Load existing project:
-    echo -l, --load /path/to/project -e|--environment NAME Load existing project to
+    echo -l, "--load /path/to/project -e|--environment NAME Load existing project to"
 }
 
 # Creates new virtual environment if ran with -n | --new flag
