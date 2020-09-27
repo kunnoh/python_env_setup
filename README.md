@@ -38,3 +38,9 @@
     <li><strong>PYSETENV_PYTHON_VERSION</strong>  This the python version to use. The default is python3</li>
     <li><strong>PYSETENV_PYTHON_PATH</strong> This is the python installation folder in the system</li>
 </ul>
+<h4>Switching between virtual environment</h4>
+<p>on the terminal type the following to sitch from foo to bar virtual environment</p>
+<code>pysetenv bar</code>
+<h4>Deactivate</h4>
+<p>Type this on terminal to deactivate virtual environment</p>
+<code>deactivate</code>
