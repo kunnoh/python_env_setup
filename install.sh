@@ -34,7 +34,7 @@ then
     fi
 
     # Add Python on Debian
-    if [[ ${OS_NAME} == *Kali* ]] ;
+    if [[ "${OS_NAME}" == *"Kali"* ]] ;
     then
         add-apt-repository ppa:deadsnakes/ppa
         apt-get update
@@ -42,7 +42,7 @@ then
     fi
 
     # Add Python PPA on Ubuntu
-    if [[ ${OS_NAME} == *Ubuntu* ]];
+    if [[ "${OS_NAME}" == *"Ubuntu"* ]];
     then
         add-apt-repository ppa:fkrull/deadsnakes
         apt-get update
