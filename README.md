@@ -18,7 +18,7 @@
 <h4>INSTALLATION</h4>
 
 <code>
-    curl https://raw.githubusercontent.com/connessionetech/python-installer/master/install.sh?token=AEZZGQZO75RUD2R2GVZRSQK7N53PE | sh -
+    curl https://raw.githubusercontent.com/connessionetech/python-installer/master/install.sh | sh -
 </code>
 
 <h4>USAGE</h4>
@@ -39,7 +39,7 @@
     <li><strong>PYSETENV_PYTHON_PATH</strong> This is the python installation folder in the system</li>
 </ul>
 <h4>Switching between virtual environment</h4>
-<p>on the terminal type the following to sitch from foo to bar virtual environment</p>
+<p>on the terminal type the following to switch from foo to bar virtual environment</p>
 <code>pysetenv bar</code>
 <h4>Deactivate</h4>
 <p>Type this on terminal to deactivate virtual environment</p>
