@@ -25,7 +25,7 @@ then
     OS_VERSION=$(cat /etc/os-release | grep -w VERSION_ID | cut -d= -f2 | tr -d '"')
     DISTRO=$(cat /etc/os-release | grep -w ID_LIKE | cut -d= -f2 | tr -d '=')
 
-    echo -e ${BOLD_YELLOW}"[*] ${GREEN}Found:${BOLD_GREEN}" ${OS_NAME} ${GREEN}"Version: "${BOLD_GREEN}${OS_VERSION}
+    echo -e ${YELLOW}"[*] ${GREEN}Found:${BOLD_GREEN}" ${OS_NAME} ${GREEN}"Version: "${BOLD_GREEN}${OS_VERSION}
     
     # Add Python on RedHat 7
     if [  ];
@@ -34,7 +34,7 @@ then
     fi
 
     # Add Python on Debian
-    if [ "${OS_NAME}" == "Kali" ] ;
+    if [[ ${OS_NAME} == *Kali* ]] ;
     then
         add-apt-repository ppa:deadsnakes/ppa
         apt-get update
@@ -42,7 +42,7 @@ then
     fi
 
     # Add Python PPA on Ubuntu
-    if [ "${OS_NAME}" == *"Ubuntu"* ];
+    if [[ ${OS_NAME} == *Ubuntu* ]];
     then
         add-apt-repository ppa:fkrull/deadsnakes
         apt-get update
