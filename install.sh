@@ -1,4 +1,4 @@
-# #!/usr/bin/env bash
+# #!/bin/bash
 
 CYAN='\033[0;36m'
 BOLD_GREEN="\033[1;32m"
@@ -27,28 +27,22 @@ then
 
     echo -e ${BOLD_YELLOW}"[*] ${GREEN}Found:${BOLD_GREEN}" ${OS_NAME} ${GREEN}"Version: "${BOLD_GREEN}${OS_VERSION}
     
-    # Add RedHat 7 PPA
+    # Add Python on RedHat 7
     if [  ];
     then
         echo Adding Python PPA
     fi
 
-    # Add CentOS PPA
-    if [  ];
-    then
-        echo Adding Python PPA
-    fi
-
-    # Add debian PPA
-    if [[ -e ${OS_NAME} == *"Debian"* ]] ;
+    # Add Python on Debian
+    if [ "${OS_NAME}" == "Kali" ] ;
     then
         add-apt-repository ppa:deadsnakes/ppa
         apt-get update
         apt-get install python${PYSETENV_PYTHON_VERSION}
     fi
 
-    # Add ubuntu PPA
-    if [[ -e ${OS_NAME} == *"Ubuntu"* ]];
+    # Add Python PPA on Ubuntu
+    if [ "${OS_NAME}" == *"Ubuntu"* ];
     then
         add-apt-repository ppa:fkrull/deadsnakes
         apt-get update
@@ -56,6 +50,11 @@ then
         exit
     fi
 else
+    # Add Python on CentOS
+    if [  ];
+    then
+        echo Adding Python PPA
+    fi
     echo -e ${BOLD_RED}"THIS IS NOT A GNU/LINUX DISTRO"
     echo -e ${YELLOW}"Exiting ! ! !"${RESET}
     exit 1
