@@ -25,34 +25,74 @@ then
     OS_VERSION=$(cat /etc/os-release | grep -w VERSION_ID | cut -d= -f2 | tr -d '"')
     DISTRO=$(cat /etc/os-release | grep -w ID_LIKE | cut -d= -f2 | tr -d '=')
 
-    echo -e ${YELLOW}"[*] ${GREEN}Found:${BOLD_GREEN}" ${OS_NAME} ${GREEN}"Version: "${BOLD_GREEN}${OS_VERSION}
+    echo -e ${YELLOW}"[*] ${GREEN}Operating System:${BOLD_GREEN}" ${OS_NAME} ${GREEN}"Version: "${BOLD_GREEN}${OS_VERSION}${RESET}
+    echo -e ${YELLOW}"[*] ${GREEN}Path to virtual environment directory:${BOLD_GREEN}" ${PYSETENV_VIRTUAL_DIR_PATH}${RESET}
+    echo -e ${YELLOW}"[*] ${GREEN}Python Version On Config.ini:${BOLD_GREEN}" ${PYSETENV_PYTHON_VERSION}${RESET}
 
     # Add Python on RedHat 7
-    if [ "$OS_NAME" == "Red Hat Enterprise Linux Server" ];
+    if [[ "$OS_NAME" == *"Red Hat"* ]];
     then
-        yum install gcc
-	cd /opt
-	wget https://www.python.org/ftp/python/${PYSETENV_PYTHON_VERSION}/Python-${PYSETENV_PYTHON_VERSION}.tgz
-	tar xzf Python-${PYSETENV_PYTHON_VERSION}.tgz
-	cd Python-${PYSETENV_PYTHON_VERSION}
-	./configure
-	make altinstall
+        # check if python is already installed
+        if hash python${PYSETENV_PYTHON_VERSION};
+        then
+            echo -e ${YELLOW}"[*] ${CYAN}Checking python version installed currently on the system..."${RESET}
+            echo -e ${YELLOW}"[*] " ${BOLD_GREEN}"$(python${PYSETENV_PYTHON_VERSION} -V) ${GREEN} already installed on the system"
+        else
+            read -p "install python${PYSETENV_PYTHON_VERSION} on the system (Y/N)" y_n
+            case $y_n in
+                Y|y)
+                    yum install gcc
+                    cd /opt
+                    wget https://www.python.org/ftp/python/${PYSETENV_PYTHON_VERSION}.*/Python-${PYSETENV_PYTHON_VERSION}.*.tgz
+                    tar xzf Python-${PYSETENV_PYTHON_VERSION}.tgz
+                    cd Python-${PYSETENV_PYTHON_VERSION}
+                    ./configure
+                    make altinstall ;;
+
+                N|n)
+                    echo -e ${YELLOW}"[!] ${RED}Aborting"${RESET}
+                    exit 1;;
+
+                *)
+                    echo -e ${YELLOW}"[*] ${BOLD_YELLOW}Enter either Y|y for yes or N|n for no"
+                    exit 1;;
+
+            esac
+        fi
     fi
 
     # Add Python on Debian
-    if [[ "${OS_NAME}" == *"Kali"* ]] ;
+    if [[ "${OS_NAME}" == *"Debian"* ]] ;
     then
         add-apt-repository ppa:deadsnakes/ppa
         apt-get update
         apt-get install python${PYSETENV_PYTHON_VERSION}
+        apt-get autoremove -y
     fi
     # Add Python PPA on Ubuntu
     if [[ "$OS_NAME" == *"Ubuntu"* ]];
     then     
-        add-apt-repository ppa:fkrull/deadsnakes
-        apt-get update
-        apt-get install python${PYSETENV_PYTHON_VERSION}
-        apt-get autoremove -y
+        if hash python${PYSETENV_PYTHON_VERSION};
+        then
+            echo -e ${YELLOW}"[*] ${CYAN}Checking python version installed currently on the system..."${RESET}
+            echo -e ${YELLOW}"[*] "${BOLD_GREEN}"$(python${PYSETENV_PYTHON_VERSION} -V) ${GREEN} already installed on the system"${RESET}
+        
+        else
+            read -p "install python${PYSETENV_PYTHON_VERSION} on the system (Y/N)" y_n
+            case $y_n in
+                Y|y) 
+                    add-apt-repository ppa:fkrull/deadsnakes
+                    apt-get update
+                    apt-get install python${PYSETENV_PYTHON_VERSION}
+                    apt-get autoremove -y ;;
+                N|n) 
+                    echo -e ${YELLOW}"[!] ${RED}Aborting"${RESET}
+                    exit 1;;
+                *) 
+                    echo -e ${YELLOW}"[*] ${BOLD_YELLOW}Enter either Y|y for yes or N|n for no"
+                    exit 1;;
+            esac
+        fi
     fi
 else
     # Add Python on CentOS
@@ -60,40 +100,23 @@ else
     then
         echo Adding Python PPA
     fi
-    echo -e ${BOLD_RED}"THIS IS NOT A GNU/LINUX DISTRO"
     echo -e ${YELLOW}"Exiting ! ! !"${RESET}
     exit 1
 fi
 
-echo -e ${YELLOW}"[*] ${CYAN}Checking python version installed currently on the system..."${RESET}
-
-_install_py()
-{
-    if hash python${PYSETENV_PYTHON_VERSION};
-    then
-        echo -e ${YELLOW}"[*]${BOLD_GREEN}" $(python${PYSETENV_PYTHON_VERSION} -V) ${CYAN}"Found on the system"
-
-    else
-        echo -e ${YELLOW}"[!] Warning! ${CYAN} python${PYSETENV_PYTHON_VERSION} not found on the system..."
-        read -p "[+] Install Python${PYSETENV_PYTHON_VERSION} on the system... (Y/N)" yes_no
-        exit 1
-
-    fi
-}
-
-ver=$(python3 -V 2>&1 | sed 's/.* \([0-9]\).\([0-9]\).*/\1\2/')
-
-if [ "$ver" -lt "35" ];
+if [ -f ~/.py_setup.sh ];
 then
-    echo -e ${BOLD_RED}"[!] ${RED}python3 not found"
-    echo -e ${BOLD_GREEN}"[+] ${CYAN}Installing python3"
+    echo -e ${YELLOW}"[*] "${BOLD_GREEN}"pysetenv already installed"
+    echo -e ${YELLOW}"***********************************************************"${RESET}
+    exit 1
 fi
 
-echo -e ${BOLD_GREEN}"[+] ${CYAN}Creating directory to hold all Python virtual environments"${RESET}
+echo -e ${YELLOW}"[+] ${CYAN}Creating directory to hold all Python virtual environments"${RESET}
 mkdir -p "${HOME}"/virtualenvs
 echo -e ${YELLOW}"[*] ${CYAN}Downloading pysetenv"${PURPLE}
 
 curl -# https://raw.githubusercontent.com/connessionetech/python-installer/master/py_setup.sh -o ${HOME}/.py_setup.sh
+curl -# https://raw.githubusercontent.com/connessionetech/python-installer/master/config.ini -o ${HOME}/.config.ini
 
 if [ -e "${HOME}/.zshrc" ];
 then
