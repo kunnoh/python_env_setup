@@ -26,11 +26,17 @@ then
     DISTRO=$(cat /etc/os-release | grep -w ID_LIKE | cut -d= -f2 | tr -d '=')
 
     echo -e ${YELLOW}"[*] ${GREEN}Found:${BOLD_GREEN}" ${OS_NAME} ${GREEN}"Version: "${BOLD_GREEN}${OS_VERSION}
-    
+
     # Add Python on RedHat 7
-    if [  ];
+    if [ "$OS_NAME" == "Red Hat Enterprise Linux Server" ];
     then
-        echo Adding Python PPA
+        yum install gcc
+	cd /opt
+	wget https://www.python.org/ftp/python/${PYSETENV_PYTHON_VERSION}/Python-${PYSETENV_PYTHON_VERSION}.tgz
+	tar xzf Python-${PYSETENV_PYTHON_VERSION}.tgz
+	cd Python-${PYSETENV_PYTHON_VERSION}
+	./configure
+	make altinstall
     fi
 
     # Add Python on Debian
