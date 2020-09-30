@@ -41,13 +41,16 @@ then
             read -p "install python${PYSETENV_PYTHON_VERSION} on the system (Y/N)" y_n
             case $y_n in
                 Y|y)
-                    yum install gcc
-                    cd /opt
-                    wget https://www.python.org/ftp/python/${PYSETENV_PYTHON_VERSION}.*/Python-${PYSETENV_PYTHON_VERSION}.*.tgz
-                    tar xzf Python-${PYSETENV_PYTHON_VERSION}.tgz
-                    cd Python-${PYSETENV_PYTHON_VERSION}
-                    ./configure
-                    make altinstall ;;
+                    subscription-manager repos --enable rhel-7-server-optional-rpms \
+                    --enable rhel-server-rhscl-7-rpms
+                    yum -y install @development
+                    yum -y install rh-python36
+                    yum -y install rh-python36-numpy \
+                    rh-python36-scipy \ 
+                    rh-python36-python-tools \
+                    rh-python36-python-six
+                    scl enable rh-python36 bash
+                     ;;
 
                 N|n)
                     echo -e ${YELLOW}"[!] ${RED}Aborting"${RESET}
