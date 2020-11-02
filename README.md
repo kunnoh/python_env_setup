@@ -4,7 +4,7 @@
     This is a script used to setup and manage python3 projects & virtual environments
 </p>
 <p>
-    Works on popular linux OS Debian, Ubuntu, Redhat, CentOs, Fedora, Kali
+    Works on popular linux OS Debian, Ubuntu, Redhat, CentOs, Fedora
 </p>
 <p>
     It provides the following features:
@@ -44,3 +44,20 @@
 <h4>Deactivate</h4>
 <p>Type this on terminal to deactivate virtual environment</p>
 <code>deactivate</code>
+
+
+## Supported platforms
+
+| OS  | Python Versions  | Comment/note  |   |   |
+|---|---|---|---|---|
+| Ubuntu 20.x  | |   |   |   |
+| Ubuntu 18.x  | 3.6, 3.7, 3.8 |   |   |   |
+| Ubuntu 16.x  | 3.5, 3.6, 3.7, 3.8, 3.9 |   |   |   |
+| Debian 10 | 3.5, 3.6, 3.7, 3.8, 3.9 |   |   |   |
+| CentOs 6.x | x |   |   |   |
+| CentOs 7.x | 3.5, 3.6, 3.7, 3.8, 3.9 |   |   |   |
+| CentOs 8.x | 3.5, 3.6, 3.7, 3.8, 3.9 |   |   |   |
+| Red Hat 7.x | 3.5, 3.6, 3.7, 3.8, 3.9 |   |   |   |
+| Red Hat 8.x | 3.5, 3.6, 3.7, 3.8, 3.9 |   |   |   |
+
+
